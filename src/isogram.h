@@ -4,5 +4,6 @@
 #include <stdbool.h>
 
 bool is_isogram(const char phrase[]);
+bool is_letter(char Phrase[]);
 
 #endif

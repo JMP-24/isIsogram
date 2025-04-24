@@ -5,28 +5,34 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int main(int argc,char*argv){
+
+int main(int argc,char**argv){
     if(argc>2||argc<2){
-        print("wrong amount of arguments");
+        printf("wrong amount of arguments");
         return -1;
     }
-    if(false==is_char(argv[1]))
-    if(1==is_isogram(argv[1])){
-        print("is isogram");
+    /*if(false==is_letter(argv[1])){
+        printf("error");
+        return -1;
+    }*/
+    if(is_isogram(argv[1])){
+        printf("is isogram");
         return 0;
     }
     else{
-        print("is no isogram");
+        printf("is no isogram");
         return 0;
     }
     return 0;
 }
 
-bool is_char(const char Phrase[]){
+bool is_letter(char Phrase[]){
+    int i=0;
     while(Phrase[i]!='\0'){
         if(isalpha(Phrase[i])){
             return false;
         }
+        Phrase[i]=tolower(Phrase[i]);
         i++;
     }
     return true;
