@@ -34,15 +34,30 @@ bool is_char(const char Phrase[]){
 
 
 
-bool is_isogram(const char phrase[]){
 
-    int characters[256] = {0};
+bool is_isogram(const char phrase[]) {
+    int counts[256] = {0};
 
-    for(int i=0; phrase[i] != '\0'; i++){
-        if(characters[phrase[i]])
-            return false;   // Character already seen
-        characters[phrase[i]] = 1;
+    for (int i = 0; phrase[i] != '\0'; i++) {
+        if (isalpha(phrase[i])) {
+            counts[tolower(phrase[i])]++;
+        }
+        else{
+            counts[phrase[i]]++;
+        }
     }
 
-    return true;
+    int frequency = 0;
+    for (int i = 0; i < 256; i++) {
+        if (counts[i] > 0) {
+            if (frequency == 0) {
+                frequency = counts[i]; // Set initial frequency(first non-zero frequency)
+            }
+            else if (counts[i] != frequency) {
+                return false; // Different frequency found
+            }
+        }
+    }
+
+    return true; // All used letters occur equally often
 }
