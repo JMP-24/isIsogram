@@ -8,7 +8,7 @@
 
 int main(int argc,char**argv){
     if(argc>2||argc<2){
-        printf("wrong amount of arguments");
+        printf("wrong amount of arguments\n");
         return -1;
     }
     /*if(false==is_letter(argv[1])){
@@ -16,7 +16,7 @@ int main(int argc,char**argv){
         return -1;
     }*/
     if(is_isogram(argv[1])){
-        printf("is isogram");
+        printf("is isogram\n");
         return 0;
     }
     else{
